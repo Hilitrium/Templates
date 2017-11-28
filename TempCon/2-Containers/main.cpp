@@ -4,7 +4,22 @@
 int main() {
 	intVector nums;
 
-	assertEqual<size_t>(nums.getCapacity(), 2);
+	nums.append(1);
+	nums.append(2);
+	nums.append(3);
+	nums.append(4);
+	nums.append(5);
+
+	//nums.erase(3);
+	int howManyFours = nums.Count(4);
+	nums.insert(2, 4);
+	assertEqual(howManyFours, 3);
+	nums.Reserve(50);
+	assertEqual((int)nums.getCapacity(), 50);
+
+	
+
+	/*assertEqual<size_t>(nums.getCapacity(), 2);
 
 
 	
@@ -24,9 +39,8 @@ int main() {
 	assert<false>(nums.empty());
 	assertEqual(nums.front(), 1);
 	assertEqual(nums.back(), 33);
-	assertEqual(nums.c_ptr(), &nums.at(0));
-
-
-
-	return 0;
+	assertEqual(nums.c_ptr(), &nums.at(0));*/
+	
+	
+	while (true) {}
 }

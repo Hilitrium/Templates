@@ -12,6 +12,16 @@ intVector::~intVector() {
 	delete[] data;
 }
 
+int & intVector::operator[](size_t idx)
+{
+	return data[idx];
+}
+
+int intVector::operator[](size_t idx) const
+{
+	return data[idx];
+}
+
 int& intVector::at(size_t idx) {
 	assert(idx > 0);
 	assert(idx < size);
@@ -76,3 +86,60 @@ int intVector::back() const
 {
 	return data[size - 1];
 }
+
+void intVector::clear(){
+	size = 0;
+}
+
+void intVector::erase(size_t idx){
+	for (int i = idx; i < size; i++) {
+		int temp = data[i];
+		data[i] = data[i + 1];
+		data[i + 1] = temp;
+	}
+	size--;
+}
+
+int intVector::Count(int value) {
+	int counter = 0;
+	for (int i = 0; i < size; i++) {
+		if (data[i] == value) {
+			counter++;
+		}
+	}
+	return counter;
+}
+
+void intVector::insert(size_t idx, int value) {
+	assert(idx >= 0);
+	assert(idx < size);
+	
+	append(value);
+
+	for (int i = size; i >= idx; i--) {
+		int temp = data[i];
+		data[i] = data[i - 1];
+		data[i - 1] = temp;
+	}
+}
+
+void intVector::Reserve(size_t newCapacity) {
+	if (newCapacity < capacity) {
+		int *newData = new int[newCapacity];
+		memcpy(newData, data, sizeof(int) * size);
+		delete[] data;
+		data = newData;
+		capacity = newCapacity;
+	}
+}
+
+void intVector::Compact() {
+	if (capacity > size) {
+		int * newData = new int[size];
+		memcpy(newData, data, sizeof(int) * size);
+		delete[] data;
+		data = newData;
+		capacity = size;
+	}
+}
+
