@@ -112,10 +112,12 @@
   <ItemGroup>
     <ClCompile Include="intvector.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="tVector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="intvecter.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="tvector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

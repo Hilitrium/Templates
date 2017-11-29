@@ -1,4 +1,5 @@
 #include "intvecter.h"
+#include "tvector.h"
 #include "test.h"
 
 int main() {
@@ -13,7 +14,7 @@ int main() {
 	//nums.erase(3);
 	int howManyFours = nums.Count(4);
 	nums.insert(2, 4);
-	assertEqual(howManyFours, 3);
+	assertEqual(howManyFours, 1);
 	nums.Reserve(50);
 	assertEqual((int)nums.getCapacity(), 50);
 

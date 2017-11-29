@@ -124,7 +124,7 @@ void intVector::insert(size_t idx, int value) {
 }
 
 void intVector::Reserve(size_t newCapacity) {
-	if (newCapacity < capacity) {
+	if (newCapacity > capacity) {
 		int *newData = new int[newCapacity];
 		memcpy(newData, data, sizeof(int) * size);
 		delete[] data;
