@@ -8,7 +8,33 @@ class tVector {
 	size_t capacity; 
 	size_t size;
 
+	bool grow(size_t minSize);
+
+	T& operator[](size_t idx);
+	T operator[](size_t idx) const;
+
 public:
+	bool grow(size_t minSize) {
+		assert(minSize <= 64000);
+
+		if (minSize <= capacity) {
+			return true;
+		}
+
+		while (capacity < minSize) {
+			capacity *= 2;
+		}
+
+		T* newData = new int[capacity];
+		memcpy(newData, data, sizeof(T) * size);
+
+		delete[] data;
+
+		data = newData;
+
+		return true;
+	}
+
 	tVector() {
 		capacity = 2;					// 1
 		data = new T[capacity];
@@ -53,14 +79,17 @@ public:
 	}
 
 	T front() const {
+		assert(size > 0);
 		return data[0];
 	}
 
 	T back() const {
+		assert(size > 0);
 		return data[size - 1];
 	}
 
 	void pop() {
+		assert(size > 0);
 		size -= 1;
 	}
 
@@ -69,7 +98,7 @@ public:
 	}
 
 	void erase(size_t idx) {
-		for (T i = idx; i < size; i++) {
+		for (size_t i = idx; i < size; i++) {
 			T temp = data[i];
 			data[i] = data[i + 1];
 			data[i + 1] = temp;
@@ -86,19 +115,50 @@ public:
 		}
 		return counter;
 	}
+
 	void insert(size_t idx, T value) {
 		assert(idx >= 0);
 		assert(idx < size);
 
 		append(value);
 
-		for (T i = size; i >= idx; i--) {
+		for (size_t i = size; i >= idx; i--) {
 			T temp = data[i];
 			data[i] = data[i - 1];
 			data[i - 1] = temp;
 		}
 	}
 
+	void Reserve(size_t newCapacity) {
+		if (newCapacity > capacity) {
+			T *newData = new T[newCapacity];
+			memcpy(newData, data, sizeof(T) * size);
+			delete[] data;
+			data = newData;
+			capcity = newCapacity;
+		}
+	}
+	
+	void Compact() {
+		if (capacity > size) {
+			T * newData = new T[size];
+			memcpy(newData, data, sizeof(T) * size);
+			delete[] data;
+			data = newData;
+			capcity = size;
+		}
+	}
+
+	T& operator[](size_t idx) {
+		assert(size > 0);
+		assert(idx > size - 1);
+		return data[idx];
+	}
+
+	T operator[](size_t idx) const {
+		assert(idx > size - 1);
+		return data[idx];
+	}
 };
 
 /*

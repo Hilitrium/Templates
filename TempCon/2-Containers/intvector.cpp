@@ -79,11 +79,12 @@ bool intVector::empty() const {
 }
 
 int intVector::front() const{
+	assert(size > 0);
 	return data[0];
 }
 
-int intVector::back() const
-{
+int intVector::back() const {
+	assert(size > 0);
 	return data[size - 1];
 }
 
