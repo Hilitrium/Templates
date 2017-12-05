@@ -110,11 +110,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="intLinkedList.cpp" />
+    <ClCompile Include="intLinkedListNode.cpp" />
     <ClCompile Include="intvector.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tVector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="intLinkedList.h" />
     <ClInclude Include="intvecter.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="tvector.h" />

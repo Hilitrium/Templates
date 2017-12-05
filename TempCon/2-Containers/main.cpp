@@ -1,8 +1,19 @@
 #include "intvecter.h"
 #include "tvector.h"
 #include "test.h"
+#include "intLinkedList.h"
 
 int main() {
+	intLinkedList nums;
+	nums.append(1);
+	nums.append(2);
+	nums.append(3);
+	nums.append(4);
+
+	assertEqual(nums.at(2), 3);
+	assertEqual(nums.at(7), 0);
+
+	/*
 	intVector nums;
 
 	nums.append(1);
@@ -17,7 +28,7 @@ int main() {
 	assertEqual(howManyFours, 1);
 	nums.Reserve(50);
 	assertEqual((int)nums.getCapacity(), 50);
-
+	*/
 	
 
 	/*assertEqual<size_t>(nums.getCapacity(), 2);

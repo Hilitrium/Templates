@@ -24,6 +24,12 @@
     <ClCompile Include="tVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="intLinkedListNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intLinkedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="intvecter.h">
@@ -33,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tvector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intLinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

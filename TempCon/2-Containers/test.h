@@ -2,7 +2,8 @@
 #include<cstdlib>
 
 template<bool exp>
-void assert(bool cond) {
+void Myassert(bool cond) 
+{
 	if (cond == exp) {
 		return;
 	}
@@ -10,7 +11,8 @@ void assert(bool cond) {
 }
 
 template<typename T>
-void assertEqual(T a, T b) {
+void assertEqual(T a, T b)
+{
 	if (a == b) {
 		return;
 	}

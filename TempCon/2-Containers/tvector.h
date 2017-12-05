@@ -8,10 +8,19 @@ class tVector {
 	size_t capacity; 
 	size_t size;
 
-	bool grow(size_t minSize);
+	//bool grow(size_t minSize);
 
-	T& operator[](size_t idx);
-	T operator[](size_t idx) const;
+	T& operator[](size_t idx)
+	{
+		assert(size > 0);
+		assert(idx > size - 1);
+		return data[idx];
+	}
+	T operator[](size_t idx) const
+	{
+		assert(idx > size - 1);
+		return data[idx];
+	}
 
 public:
 	bool grow(size_t minSize) {
@@ -149,16 +158,16 @@ public:
 		}
 	}
 
-	T& operator[](size_t idx) {
+	/*T& operator[](size_t idx) {
 		assert(size > 0);
 		assert(idx > size - 1);
 		return data[idx];
-	}
+	}*/
 
-	T operator[](size_t idx) const {
+	/*T operator[](size_t idx) const {
 		assert(idx > size - 1);
 		return data[idx];
-	}
+	}*/
 };
 
 /*
