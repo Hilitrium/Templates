@@ -2,16 +2,27 @@
 #include "tvector.h"
 #include "test.h"
 #include "intLinkedList.h"
+#include <algorithm>
+#include "algorithms.h"
 
 int main() {
-	intLinkedList nums;
+	tVector<int> nums;
+	nums.append(0);
+	nums.append(1);
+
+	auto begin = nums.begin();
+	auto end = nums.end();
+
+	int total = addRange<iterator<tVector<int>>, int>(begin, end);
+
+	/*intLinkedList nums;
 	nums.append(1);
 	nums.append(2);
 	nums.append(3);
 	nums.append(4);
 
 	assertEqual(nums.at(2), 3);
-	assertEqual(nums.at(7), 0);
+	assertEqual(nums.at(7), 0);*/
 
 	/*
 	intVector nums;

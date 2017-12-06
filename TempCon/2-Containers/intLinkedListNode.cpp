@@ -5,6 +5,14 @@ intLinkedList::intLinkedList() : head(nullptr) {
 
 }
 
+intLinkedList::intLinkedList(const intLinkedList & other) {
+	intLinkedListNode* iter = other.head;
+	while (iter != nullptr) {
+		append(iter->value);
+		iter = iter->next;
+	}
+}
+
 intLinkedList::~intLinkedList() {
 	intLinkedListNode* iter = head;
 	while (iter != nullptr) {
@@ -18,6 +26,7 @@ void intLinkedList::append(int value) {
 	intLinkedListNode* newNode = new intLinkedListNode;
 	newNode->value = value;
 	newNode->next = nullptr;
+	newNode->prev = nullptr;
 
 	if (head == nullptr) {
 		head = newNode;
@@ -64,19 +73,90 @@ size_t intLinkedList::size() const {
 	return retval;
 }
 
-void intLinkedList::erase(int index) 
+bool intLinkedList::empty()
 {
-	intLinkedListNode* nodeToDelete = new intLinkedListNode;
-	//logic for finding the node at the index
-	while (index == nodeToDelete) {
+	return head == nullptr;
+}
 
+int intLinkedList::front()
+{
+	assert(!empty());
+
+	return head->value;
+}
+
+int intLinkedList::back()
+{
+	assert(!empty());
+
+	intLinkedListNode* iter = head;
+	while (iter->next != nullptr) {
+		iter = iter->next;
+	}
+	return iter->value;
+}
+
+void intLinkedList::erase(size_t idx) 
+{
+	assert(idx < size());
+
+	intLinkedListNode *iter = head;
+	int counter = 0;
+
+	while (iter->next != nullptr && counter != idx) {
+		
+		iter = iter->next;
+		counter++;
+	}
+	//assert(counter == idx);
+
+	iter->prev->next = iter->next;
+	
+	if (idx == 0) {
+		head = iter->next;
 	}
 
-	intLinkedListNode *temp = nodeToDelete;
-	
-	//the one before temp needs to point towards the temps next
-	nodeBeforeTemp->next = temp->next;
-	delete temp;
+	delete iter;
+}
+
+void intLinkedList::clear() {
+	intLinkedListNode* iter = head;
+	while (iter != nullptr) {
+		intLinkedListNode*next = iter->next;
+		delete iter;
+		iter = next;
+	}
+	head = nullptr;
+}
+
+int intLinkedList::count(int value) {
+	intLinkedListNode *iter = head;
+	int counter = 0;
+
+	while (iter != nullptr) {
+		if (iter->value == value) {
+			counter++;
+		}
+		iter = iter->next;
+	}
+
+	return counter;
+}
+
+void intLinkedList::insert(size_t idx, int value) {
+	intLinkedListNode *newNode = new intLinkedListNode;
+	newNode->value = value;
+
+	intLinkedListNode *iter = head;
+
+	int counter = 0;
+	while (iter->next != nullptr && counter != idx) {
+		iter = iter->next;
+		counter++;
+	}
+	iter->prev->next = newNode;
+	newNode->next = iter;
+	newNode->prev = iter->prev;
 
 }
 

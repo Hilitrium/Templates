@@ -1,6 +1,7 @@
 #pragma once
 #include <cassert>
 #include <cstring>
+#include "iterator.h"
 
 template<typename T>
 class tVector {
@@ -53,11 +54,20 @@ public:
 		delete[] data;
 	}
 
+	iterator<tVector<T>> begin() {
+
+		return iterator<tVector<T>>(*this, 0);
+	}
+
+	iterator<tVector<T>> end() {
+		return iterator<tVector<T>>(*this, size);
+	}
+
 	T& at(size_t idx) {
 		assert(idx > 0);
 		assert(idx < size);
 
-		return data[idx]
+		return data[idx];
 	}
 	T& append(T val) {
 		if (size == capacity) {

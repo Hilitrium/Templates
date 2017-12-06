@@ -117,8 +117,12 @@
     <ClCompile Include="tVector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="algorithms.h" />
     <ClInclude Include="intLinkedList.h" />
     <ClInclude Include="intvecter.h" />
+    <ClInclude Include="iterator.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="tvector.h" />
   </ItemGroup>

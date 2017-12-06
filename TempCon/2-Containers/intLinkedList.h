@@ -5,9 +5,12 @@ public:
 	struct intLinkedListNode {
 		int value;
 		intLinkedListNode* next;
+		intLinkedListNode* prev;
 	};
 
 	intLinkedList();
+	intLinkedList(const intLinkedList& other);
+
 	~intLinkedList();
 
 	void append(int value);
@@ -19,7 +22,10 @@ public:
 	int front();
 	int back();
 
-	void erase(int index);
+	void erase(size_t idx);
+	void clear();
+	int count(int value);
+	void insert(size_t idx, int value);
 
 private:
 	intLinkedListNode* head;
